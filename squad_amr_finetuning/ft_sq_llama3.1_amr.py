@@ -66,9 +66,9 @@ tokenizer.pad_token_id = tokenizer.eos_token_id
 
 def tokenize_function(example):
     start_prompt = '''Answer the given question based on the context.
-    If the question can't be answered based on the information in the context, return "unanswerable".
-    You will not return anything except the answer.
-    You may also use the provided linearized Abstract Meaning Representation (AMR) structure of the paragraph to aid in reasoning.'''
+If the question can't be answered based on the information in the context, return "unanswerable".
+You will not return anything except the answer.
+You may also use the provided linearized Abstract Meaning Representation (AMR) structure of the paragraph to aid in reasoning.'''
     end_prompt = '\nAnswer: '
     prompt = [f'''{start_prompt}\n\nContext: {context}\n\nAMR: {amr}\n\nQuestion: {question}{end_prompt}''' 
               for context,question,amr in zip(example['context'], example['question'], example['only_amr'])]
